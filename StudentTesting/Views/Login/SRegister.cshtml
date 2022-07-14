@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNetCore.Http
+@model StudentTesting.Models.Studenttbl
+@inject IHttpContextAccessor HttpContextAccessor;
+
+@{
+    ViewData["Title"] = "SRegister";
+    Layout = "CommonLayout";
+    
+}
+
+@{
+    ViewBag.StudentId = @HttpContextAccessor.HttpContext.Session.GetInt32("StudentId");
+}
+@if (ViewBag.StudentId != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Registration Successful!</strong>
+        <a id="manage" class="nav-link text-dark" asp-controller="Home" asp-action="Privacy" title="Manage">Your Unique Student ID is @ViewBag.StudentId!</a>
+        @*<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>*@
+    </div>
+    <div style="text-align:center">
+    <a class="btn btn-danger btn-outline-dark" asp-controller="Login" asp-action="SLogin" role="button">Student-Login</a>
+    </div>
+    
+}
+
+<div class="row row d-flex aligns-items-center justify-content-center">
+    <div class="col-md-8 card p-3 px-5 py-5 mt-3 bg-light">
+        <form asp-action="SRegister" class="row g-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h4 style="text-align:center">Student Register</h4>
+            <div class="col-md-6">
+                <label asp-for="StudentName" class="control-label"></label>
+                <input asp-for="StudentName" class="form-control" />
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Reg_no" class="control-label"></label>
+                <input asp-for="Reg_no" class="form-control" />
+                <span asp-validation-for="Reg_no" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Mobile_No" class="control-label"></label>
+                <input asp-for="Mobile_No" class="form-control" />
+                <span asp-validation-for="Mobile_No" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="StudentEmail" class="control-label"></label>
+                <input asp-for="StudentEmail" class="form-control" />
+                <span asp-validation-for="StudentEmail" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Department" class="control-label"></label>
+                <select asp-for="Department" class="form-select btn-outline-light">
+                <option selected> </option>
+                <option>EEE</option>
+                <option>MECH</option>
+                <option>CIVIL</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                </select>
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+           <div class="col-md-6">
+                <label asp-for="CPassword" class="control-label"></label>
+                <input asp-for="CPassword" class="form-control" type="password"/>
+                <span asp-validation-for="CPassword" class="text-danger"></span>
+            </div>
+            <p></p>
+            <div class="form-group" style="text-align:center">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<p></p>
+<p></p>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

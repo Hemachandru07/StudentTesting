@@ -1,0 +1,130 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+    @using Microsoft.AspNetCore.Http
+    @inject IHttpContextAccessor HttpContextAccessor
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body 
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mynav_navbar 
+{
+  overflow: hidden;
+  background-color: #333;
+}
+
+.mynav_navbar a 
+{
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.mynav_dropdown 
+{
+  float: left;
+  overflow: hidden;
+}
+
+.mynav_dropdown .mynav_dropbtn 
+{
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
+  background-color: red;
+}
+
+.mynav_dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.mynav_dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.mynav_dropdown-content a:hover 
+{
+  background-color: #ddd;
+}
+
+.mynav_dropdown:hover .mynav_dropdown-content {
+  display: block;
+}
+</style>
+
+</head>
+
+<ul class="navbar-nav">
+    @{
+        ViewBag.FacultyName = @HttpContextAccessor.HttpContext.Session.GetString("FacultyName");
+    }
+@if (ViewBag.FacultyName != null)
+{
+    <li class="nav-item">
+        <a  class="nav-link text-dark" title="Manage">Hello @ViewBag.FacultyName!</a>
+    </li>
+   
+    <li class="nav-item">
+        <form>
+            <button  type="submit" class="nav-link btn btn-link text-dark" asp-Controller ="Login" asp-action="Logout1">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <div class="mynav_navbar">
+                    <div class="mynav_dropdown">
+                        <button class="mynav_dropbtn">Login
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                            <div class="mynav_dropdown-content">
+                                <a asp-controller="Login" asp-action="SLogin">Student Login</a>
+                                <a asp-Controller="Login" asp-action="TLogin">Teacher Login</a>
+                            </div>
+                    </div>
+    </div>
+
+    <div class="mynav_navbar">
+                    <div class="mynav_dropdown">
+                        <button class="mynav_dropbtn">Register
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                            <div class="mynav_dropdown-content">
+                                <a asp-controller="Login" asp-action="SRegister">Student Register</a>
+                                <a asp-Controller="Login" asp-action="TRegister">Teacher Register</a>
+                            </div>
+                    </div>
+    </div>
+}
+</ul>
+
+</html>

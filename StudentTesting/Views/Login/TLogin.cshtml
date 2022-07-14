@@ -1,0 +1,36 @@
+﻿@model StudentTesting.Models.Teachertbl
+
+@{
+    ViewData["Title"] = "TLogin";
+    Layout = "CommonLayout";
+}
+
+
+<div class="row row d-flex aligns-items-center justify-content-center">
+    <div class="col-md-4 card p-3 px-5 py-5 mt-3 bg-light">
+        <form asp-action="TLogin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h4>Teacher Login</h4>
+            <div class="form-group">
+                <label asp-for="FacultyId" class="control-label"></label>
+                <input asp-for="FacultyId" class="form-control" />
+                <span asp-validation-for="FacultyId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
