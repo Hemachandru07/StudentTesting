@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentTesting.Models;
 
 namespace StudentTesting.Migrations
 {
-    [DbContext(typeof(TestingDBContext))]
-    partial class TestingDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(StudentDBContext))]
+    [Migration("20220715041429_migr4")]
+    partial class migr4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

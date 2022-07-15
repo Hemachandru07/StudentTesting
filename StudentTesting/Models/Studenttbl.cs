@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,7 +10,7 @@ namespace StudentTesting.Models
         [Key]
         public int StudentId { get; set; }
 
-        [Required (ErrorMessage ="*")]
+        [Required(ErrorMessage = "*")]
         [MaxLength(30)]
         [DataType(DataType.Text)]
         public string StudentName { get; set; }
@@ -24,7 +25,7 @@ namespace StudentTesting.Models
         public DateTime DOB { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [DataType (DataType.PhoneNumber)]
+        [DataType(DataType.PhoneNumber)]
         public long Mobile_No { get; set; }
 
         [Required(ErrorMessage = "*")]
@@ -43,7 +44,10 @@ namespace StudentTesting.Models
         [Compare("Password", ErrorMessage = "Password does Not Match")]
         [NotMapped]
         [Display(Name = "Confirm Password")]
-        
+
         public string CPassword { get; set; }
+
+        public virtual ICollection<MarksTable> markstable { get; set; }
+        
     }
 }

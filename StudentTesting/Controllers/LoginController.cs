@@ -8,9 +8,9 @@ namespace StudentTesting.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly TestingDBContext db;
+        private readonly StudentDBContext db;
         private readonly ISession Session;
-        public LoginController(TestingDBContext _db, IHttpContextAccessor httpContextAccessor)
+        public LoginController(StudentDBContext _db, IHttpContextAccessor httpContextAccessor)
         {
             db= _db;
             Session = httpContextAccessor.HttpContext.Session;

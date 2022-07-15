@@ -29,7 +29,7 @@ namespace StudentTesting
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TestingDBContext>(options =>
+            services.AddDbContext<StudentDBContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -37,7 +37,7 @@ namespace StudentTesting
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<TestingDBContext>();
+                .AddEntityFrameworkStores<StudentDBContext>();
             services.AddControllersWithViews();
         }
 

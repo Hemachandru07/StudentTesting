@@ -10,8 +10,8 @@ using StudentTesting.Models;
 namespace StudentTesting.Migrations
 {
     [DbContext(typeof(StudentDBContext))]
-    [Migration("20220710120738_migr1")]
-    partial class migr1
+    [Migration("20220715070610_migr5")]
+    partial class migr5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,47 @@ namespace StudentTesting.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("StudentTesting.Models.MarksTable", b =>
+                {
+                    b.Property<int>("MarksId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Subject1")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Subject2")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Subject3")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Subject4")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Subject5")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Subject6")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.HasKey("MarksId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("markstables");
+                });
 
             modelBuilder.Entity("StudentTesting.Models.Studenttbl", b =>
                 {
@@ -35,8 +76,8 @@ namespace StudentTesting.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Mobile_No")
-                        .HasColumnType("int");
+                    b.Property<long>("Mobile_No")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -74,13 +115,29 @@ namespace StudentTesting.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PassWord")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FacultyId");
 
                     b.ToTable("teachertbls");
+                });
+
+            modelBuilder.Entity("StudentTesting.Models.MarksTable", b =>
+                {
+                    b.HasOne("StudentTesting.Models.Studenttbl", "studenttbl")
+                        .WithMany("markstable")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("studenttbl");
+                });
+
+            modelBuilder.Entity("StudentTesting.Models.Studenttbl", b =>
+                {
+                    b.Navigation("markstable");
                 });
 #pragma warning restore 612, 618
         }

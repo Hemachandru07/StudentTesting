@@ -9,7 +9,7 @@ using StudentTesting.Models;
 
 namespace StudentTesting.Migrations
 {
-    [DbContext(typeof(TestingDBContext))]
+    [DbContext(typeof(StudentDBContext))]
     [Migration("20220712105533_migr-2")]
     partial class migr2
     {

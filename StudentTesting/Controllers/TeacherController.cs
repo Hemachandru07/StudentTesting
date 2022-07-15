@@ -11,9 +11,9 @@ namespace StudentTesting.Controllers
 {
     public class TeacherController : Controller
     {
-        private readonly TestingDBContext _context;
+        private readonly StudentDBContext _context;
 
-        public TeacherController(TestingDBContext context)
+        public TeacherController(StudentDBContext context)
         {
             _context = context;
         }
