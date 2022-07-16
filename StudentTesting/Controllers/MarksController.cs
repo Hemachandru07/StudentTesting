@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,24 +9,25 @@ using StudentTesting.Models;
 
 namespace StudentTesting.Controllers
 {
-    public class TeacherController : Controller
+    public class MarksController : Controller
     {
         private readonly StudentDBContext _context;
 
-        public TeacherController(StudentDBContext context)
+        public MarksController(StudentDBContext context)
         {
             _context = context;
         }
 
-        // GET: Teacher
         [NoDirectAccess]
+        // GET: Marks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.teachertbls.ToListAsync());
+            var studentDBContext = _context.marks.Include(m => m.Studentid);
+            return View(await studentDBContext.ToListAsync());
         }
 
-        // GET: Teacher/Details/5
         [NoDirectAccess]
+        // GET: Marks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,40 +35,45 @@ namespace StudentTesting.Controllers
                 return NotFound();
             }
 
-            var teachertbl = await _context.teachertbls
-                .FirstOrDefaultAsync(m => m.FacultyId == id);
-            if (teachertbl == null)
+            var marks = await _context.marks
+                .Include(m => m.Studentid)
+                .FirstOrDefaultAsync(m => m.MarksId == id);
+            if (marks == null)
             {
                 return NotFound();
             }
 
-            return View(teachertbl);
+            return View(marks);
         }
 
-        // GET: Teacher/Create
         [NoDirectAccess]
+        // GET: Marks/Create
         public IActionResult Create()
         {
+            var result = new SelectList(from i in _context.studenttbls select i.StudentId).ToList();
+            ViewBag.StudentId = result;
             return View();
         }
 
-        // POST: Teacher/Create
+        // POST: Marks/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FacultyId,FacultyName,Department,PassWord,CPassWord")] Teachertbl teachertbl)
+        public async Task<IActionResult> Create([Bind("MarksId,Subject1,Subject2,Subject3,Subject4,Subject5,Subject6,StudentId")] Marks marks)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(teachertbl);
+            //if (ModelState.IsValid)
+            //{
+                _context.Add(marks);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(teachertbl);
+            //}
+            //ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "Department", marks.StudentId);
+            //return View(marks);
         }
 
-        // GET: Teacher/Edit/5
+
+        // GET: Marks/Edit/5
         [NoDirectAccess]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -76,22 +82,23 @@ namespace StudentTesting.Controllers
                 return NotFound();
             }
 
-            var teachertbl = await _context.teachertbls.FindAsync(id);
-            if (teachertbl == null)
+            var marks = await _context.marks.FindAsync(id);
+            if (marks == null)
             {
                 return NotFound();
             }
-            return View(teachertbl);
+            ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "Department", marks.StudentId);
+            return View(marks);
         }
 
-        // POST: Teacher/Edit/5
+        // POST: Marks/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FacultyId,FacultyName,Department,PassWord,CPassWord")] Teachertbl teachertbl)
+        public async Task<IActionResult> Edit(int id, [Bind("MarksId,Subject1,Subject2,Subject3,Subject4,Subject5,Subject6,StudentId")] Marks marks)
         {
-            if (id != teachertbl.FacultyId)
+            if (id != marks.MarksId)
             {
                 return NotFound();
             }
@@ -100,12 +107,12 @@ namespace StudentTesting.Controllers
             {
                 try
                 {
-                    _context.Update(teachertbl);
+                    _context.Update(marks);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TeachertblExists(teachertbl.FacultyId))
+                    if (!MarksExists(marks.MarksId))
                     {
                         return NotFound();
                     }
@@ -116,10 +123,11 @@ namespace StudentTesting.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(teachertbl);
+            ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "Department", marks.StudentId);
+            return View(marks);
         }
 
-        // GET: Teacher/Delete/5
+        // GET: Marks/Delete/5
         [NoDirectAccess]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -128,47 +136,32 @@ namespace StudentTesting.Controllers
                 return NotFound();
             }
 
-            var teachertbl = await _context.teachertbls
-                .FirstOrDefaultAsync(m => m.FacultyId == id);
-            if (teachertbl == null)
+            var marks = await _context.marks
+                .Include(m => m.Studentid)
+                .FirstOrDefaultAsync(m => m.MarksId == id);
+            if (marks == null)
             {
                 return NotFound();
             }
 
-            return View(teachertbl);
+            return View(marks);
         }
 
-        // POST: Teacher/Delete/5
+        // POST: Marks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [NoDirectAccess]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var teachertbl = await _context.teachertbls.FindAsync(id);
-            _context.teachertbls.Remove(teachertbl);
+            var marks = await _context.marks.FindAsync(id);
+            _context.marks.Remove(marks);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        [NoDirectAccess]
-        public IActionResult TeacherMain()
+        private bool MarksExists(int id)
         {
-            return View();
-        }
-
-        public IActionResult SearchForm()
-        {
-            return View();
-        }
-
-        public IActionResult SearchResult(string SearchPhrase)
-        {
-            return View(_context.studenttbls.Where(i => i.Reg_no.Contains(SearchPhrase)).ToList());
-        }
-
-        private bool TeachertblExists(int id)
-        {
-            return _context.teachertbls.Any(e => e.FacultyId == id);
+            return _context.marks.Any(e => e.MarksId == id);
         }
     }
 }

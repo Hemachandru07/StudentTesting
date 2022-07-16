@@ -12,12 +12,13 @@ namespace StudentTesting.Models
 
         [Required(ErrorMessage = "*")]
         [MaxLength(30)]
-        [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Numbers and special characters are not allowed")]
         public string StudentName { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Display(Name = "Reg.No")]
-        public int Reg_no { get; set; }
+        [MaxLength(7)]
+        public string Reg_no { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Display(Name = "Date of Birth")]
@@ -26,7 +27,8 @@ namespace StudentTesting.Models
 
         [Required(ErrorMessage = "*")]
         [DataType(DataType.PhoneNumber)]
-        public long Mobile_No { get; set; }
+        [StringLength(13, MinimumLength = 10)]
+        public string Mobile_No { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Display(Name = "Email-ID")]
@@ -37,8 +39,8 @@ namespace StudentTesting.Models
         [DataType(DataType.Text)]
         public string Department { get; set; }
 
-        [Required(ErrorMessage = "Minimum 8 Characters required")]
-        [MinLength(8)]
+        [Required(ErrorMessage = "*")]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "At least one uppercase, one lowercase, one digit, one special character and minimum eight in length")]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Password does Not Match")]
@@ -47,7 +49,9 @@ namespace StudentTesting.Models
 
         public string CPassword { get; set; }
 
-        public virtual ICollection<MarksTable> markstable { get; set; }
+        public virtual ICollection<Marks> marks { get; set; }
+
+        
         
     }
 }

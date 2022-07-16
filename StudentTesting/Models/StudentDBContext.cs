@@ -11,6 +11,8 @@ namespace StudentTesting.Models
         public DbSet<Studenttbl> studenttbls { get; set; }
 
         public DbSet<Teachertbl> teachertbls { get; set; }
-        public DbSet<MarksTable> markstables { get; set; }
+
+        public DbSet<Marks> marks { get; set; }
+        
     }
 }

@@ -19,12 +19,14 @@ namespace StudentTesting.Controllers
         }
 
         // GET: Student
+        [NoDirectAccess]
         public async Task<IActionResult> Index()
         {
             return View(await _context.studenttbls.ToListAsync());
         }
 
         // GET: Student/Details/5
+        [NoDirectAccess]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,6 +45,7 @@ namespace StudentTesting.Controllers
         }
 
         // GET: Student/Create
+        [NoDirectAccess]
         public IActionResult Create()
         {
             return View();
@@ -65,6 +68,7 @@ namespace StudentTesting.Controllers
         }
 
         // GET: Student/Edit/5
+        [NoDirectAccess]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -116,6 +120,7 @@ namespace StudentTesting.Controllers
         }
 
         // GET: Student/Delete/5
+        [NoDirectAccess]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +141,7 @@ namespace StudentTesting.Controllers
         // POST: Student/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [NoDirectAccess]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var studenttbl = await _context.studenttbls.FindAsync(id);
@@ -144,6 +150,7 @@ namespace StudentTesting.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [NoDirectAccess]
         public IActionResult StudentMain()
         {
              return View();

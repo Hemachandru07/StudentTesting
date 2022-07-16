@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentTesting.Models;
 
 namespace StudentTesting.Migrations
 {
     [DbContext(typeof(StudentDBContext))]
-    partial class StudentDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220716145917_migr9")]
+    partial class migr9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace StudentTesting.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Subject1")
                         .HasColumnType("int");
@@ -48,8 +47,6 @@ namespace StudentTesting.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("MarksId");
-
-                    b.HasIndex("StudentId");
 
                     b.ToTable("marks");
                 });
@@ -118,22 +115,6 @@ namespace StudentTesting.Migrations
                     b.HasKey("FacultyId");
 
                     b.ToTable("teachertbls");
-                });
-
-            modelBuilder.Entity("StudentTesting.Models.Marks", b =>
-                {
-                    b.HasOne("StudentTesting.Models.Studenttbl", "Studentid")
-                        .WithMany("marks")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Studentid");
-                });
-
-            modelBuilder.Entity("StudentTesting.Models.Studenttbl", b =>
-                {
-                    b.Navigation("marks");
                 });
 #pragma warning restore 612, 618
         }

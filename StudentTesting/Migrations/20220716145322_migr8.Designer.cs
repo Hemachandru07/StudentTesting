@@ -3,56 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentTesting.Models;
 
 namespace StudentTesting.Migrations
 {
     [DbContext(typeof(StudentDBContext))]
-    partial class StudentDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220716145322_migr8")]
+    partial class migr8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("StudentTesting.Models.Marks", b =>
-                {
-                    b.Property<int>("MarksId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subject1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subject2")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subject3")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subject4")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subject5")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Subject6")
-                        .HasColumnType("int");
-
-                    b.HasKey("MarksId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("marks");
-                });
 
             modelBuilder.Entity("StudentTesting.Models.Studenttbl", b =>
                 {
@@ -118,22 +85,6 @@ namespace StudentTesting.Migrations
                     b.HasKey("FacultyId");
 
                     b.ToTable("teachertbls");
-                });
-
-            modelBuilder.Entity("StudentTesting.Models.Marks", b =>
-                {
-                    b.HasOne("StudentTesting.Models.Studenttbl", "Studentid")
-                        .WithMany("marks")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Studentid");
-                });
-
-            modelBuilder.Entity("StudentTesting.Models.Studenttbl", b =>
-                {
-                    b.Navigation("marks");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,14 +11,15 @@ namespace StudentTesting.Models
         public int FacultyId { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Numbers and special characters are not allowed")]
         public string FacultyName { get; set; }
 
         [Required(ErrorMessage = "*")]
         [DataType(DataType.Text)]
         public string Department { get; set; }
 
-        [Required(ErrorMessage = "Minimum 8 Characters required")]
-        [MinLength(8)]
+        [Required(ErrorMessage = "*")]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "At least one uppercase, one lowercase, one digit, one special character and minimum eight in length")]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Password does Not Match")]
