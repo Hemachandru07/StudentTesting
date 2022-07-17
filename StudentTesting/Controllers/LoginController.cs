@@ -69,6 +69,8 @@ namespace StudentTesting.Controllers
             }
             else
             {
+                ViewBag.Password = s.Password;
+                HttpContext.Session.SetString("LoginPassword", s.Password);
                 return View();
             }
         }
@@ -124,6 +126,8 @@ namespace StudentTesting.Controllers
             }
             else
             {
+                ViewBag.Password = t.Password;
+                HttpContext.Session.SetString("LoginPassword", t.Password);
                 return View();
             }
         }

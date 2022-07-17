@@ -1,10 +1,15 @@
 ﻿@model StudentTesting.Models.Teachertbl
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor;
 
 @{
     ViewData["Title"] = "TLogin";
     Layout = "CommonLayout";
 }
 
+@{
+    ViewBag.Password = @HttpContextAccessor.HttpContext.Session.GetString("LoginPassword");
+}
 
 <div class="row row d-flex aligns-items-center justify-content-center">
     <div class="col-md-4 card p-3 px-5 py-5 mt-3 bg-light">
@@ -25,6 +30,11 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <p></p>
+
+             @if(ViewBag.Password != null)
+            {
+                <strong style="color:brown">Password Invalid</strong>
+            }
             <div class="form-group" style="text-align:center">
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>

@@ -180,6 +180,8 @@ namespace StudentTesting.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        
+
         private bool MarksExists(int id)
         {
             return _context.marks.Any(e => e.MarksId == id);
