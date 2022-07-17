@@ -10,19 +10,22 @@
     <div class="col-md-4 card p-3 px-5 py-5 mt-3 bg-light">
         <form asp-action="TLogin">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <h4>Teacher Login</h4>
+            <img src="~/images/logo-removebg-preview.png" class="img-fluid mx-auto d-block" style="width:100px;height:100px;border-radius:35%;"alt="image">
+            <h4 style="text-align:center;color:black">Teacher Login</h4>
+            <p></p>
             <div class="form-group">
-                <label asp-for="FacultyId" class="control-label"></label>
+                <label asp-for="FacultyId" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="FacultyId" class="form-control" />
                 <span asp-validation-for="FacultyId" class="text-danger"></span>
             </div>
-            
+            <p></p>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Password" class="form-control" type="password"/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <p></p>
+            <div class="form-group" style="text-align:center">
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>

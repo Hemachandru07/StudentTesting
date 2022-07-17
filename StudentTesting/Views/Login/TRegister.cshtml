@@ -8,15 +8,19 @@
 }
 
 @{
-    ViewBag.StudentId = @HttpContextAccessor.HttpContext.Session.GetInt32("TeacherId");
+    ViewBag.FacultyId = @HttpContextAccessor.HttpContext.Session.GetInt32("FacultyId");
 }
-@if (ViewBag.StudentId != null)
+@if (ViewBag.FacultyId != null)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Registration Successful!</strong>
-        <a id="manage" class="nav-link text-dark" asp-controller="Home" asp-action="Privacy" title="Manage">Your Unique Teacher ID is @ViewBag.TeacherId!</a>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <a id="manage" class="nav-link text-dark" asp-controller="Home" asp-action="Privacy" title="Manage">Your Unique Teacher ID is @ViewBag.FacultyId!</a>
+        @*<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>*@
     </div>
+
+    <div style="text-align:center">
+    <a class="btn btn-danger btn-outline-dark" asp-controller="Login" asp-action="TLogin" role="button">Teacher-Login</a>
+</div>
 }
 
 
@@ -24,24 +28,36 @@
     <div class="col-md-4 card p-3 px-5 py-5 mt-3 bg-light">
         <form asp-action="TRegister">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <h4 style="text-align:center">Teacher Register</h4>
+            <img src="~/images/logo-removebg-preview.png" class="img-fluid mx-auto d-block" style="width:100px;height:100px;border-radius:35%;"alt="image">
+            <h4 style="text-align:center;color:black">Teacher Register</h4>
+            <p></p>
             <div class="form-group">
-                <label asp-for="FacultyName" class="control-label"></label>
+                <label asp-for="FacultyName" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="FacultyName" class="form-control" />
                 <span asp-validation-for="FacultyName" class="text-danger"></span>
             </div>
+            <p></p>
             <div class="form-group">
-                <label asp-for="Department" class="control-label"></label>
-                <input asp-for="Department" class="form-control" />
+                <label asp-for="Department" class="control-label" style="color:black;font-size:20px"></label>
+                <select asp-for="Department" class="form-select">
+                <option selected> </option>
+                <option>EEE</option>
+                <option>MECH</option>
+                <option>CIVIL</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                </select>
                 <span asp-validation-for="Department" class="text-danger"></span>
             </div>
+            <p></p>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Password" class="form-control" type="password"/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+            <p></p>
             <div class="form-group">
-                <label asp-for="CPassword" class="control-label"></label>
+                <label asp-for="CPassword" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="CPassword" class="form-control" type="password"/>
                 <span asp-validation-for="CPassword" class="text-danger"></span>
             </div>
@@ -55,9 +71,7 @@
 <p></p>
 <p></p>
 
-<div style="text-align:center">
-    <a class="btn btn-danger btn-outline-dark" asp-controller="Login" asp-action="TLogin" role="button">Teacher-Login</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

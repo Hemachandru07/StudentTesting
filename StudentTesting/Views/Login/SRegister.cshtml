@@ -28,34 +28,38 @@
     <div class="col-md-8 card p-3 px-5 py-5 mt-3 bg-light">
         <form asp-action="SRegister" class="row g-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <h4 style="text-align:center">Student Register</h4>
+            <img src="~/images/logo-removebg-preview.png" class="img-fluid mx-auto d-block" style="width:125px;height:100px;border-radius:35%;"alt="image">
+            <h4 style="text-align:center;color:black">Student Register</h4>
+            <p></p>
             <div class="col-md-6">
-                <label asp-for="StudentName" class="control-label"></label>
+                <label asp-for="StudentName" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="StudentName" class="form-control" />
                 <span asp-validation-for="StudentName" class="text-danger"></span>
             </div>
+            
             <div class="col-md-6">
-                <label asp-for="Reg_no" class="control-label"></label>
+                <label asp-for="Reg_no" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Reg_no" class="form-control" />
                 <span asp-validation-for="Reg_no" class="text-danger"></span>
             </div>
+            
             <div class="col-md-6">
-                <label asp-for="DOB" class="control-label"></label>
+                <label asp-for="DOB" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="DOB" class="form-control" />
                 <span asp-validation-for="DOB" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <label asp-for="Mobile_No" class="control-label"></label>
+                <label asp-for="Mobile_No" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Mobile_No" class="form-control" />
                 <span asp-validation-for="Mobile_No" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <label asp-for="StudentEmail" class="control-label"></label>
+                <label asp-for="StudentEmail" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="StudentEmail" class="form-control" />
                 <span asp-validation-for="StudentEmail" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <label asp-for="Department" class="control-label"></label>
+                <label asp-for="Department" class="control-label" style="color:black;font-size:20px"></label>
                 <select asp-for="Department" class="form-select">
                 <option selected> </option>
                 <option>EEE</option>
@@ -67,12 +71,12 @@
                 <span asp-validation-for="Department" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <label asp-for="Password" class="control-label"></label>
+                <label asp-for="Password" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Password" class="form-control" type="password"/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
            <div class="col-md-6">
-                <label asp-for="CPassword" class="control-label"></label>
+                <label asp-for="CPassword" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="CPassword" class="form-control" type="password"/>
                 <span asp-validation-for="CPassword" class="text-danger"></span>
             </div>

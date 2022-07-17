@@ -57,8 +57,12 @@ namespace StudentTesting.Controllers
         [HttpPost]
         public IActionResult SLogin(Studenttbl s)
         {
-            var result = (from i in db.studenttbls where i.StudentId == s.StudentId && i.Password == s.Password select i).SingleOrDefault();
-            if(result != null)
+            var result = (from i in db.studenttbls 
+                          where i.StudentId == s.StudentId && i.Password == s.Password 
+                          select i).SingleOrDefault();
+            ViewBag.StudentId = s.StudentId;
+            HttpContext.Session.SetInt32("LoginStudentId", s.StudentId);
+            if (result != null)
             {
                 HttpContext.Session.SetString("StudentName", result.StudentName);
                 return RedirectToAction("StudentMain","Student");
@@ -111,6 +115,8 @@ namespace StudentTesting.Controllers
         public IActionResult TLogin(Teachertbl t)
         {
             var result = (from i in db.teachertbls where i.FacultyId == t.FacultyId && i.Password == t.Password select i).SingleOrDefault();
+            ViewBag.StudentId = t.FacultyId;
+            HttpContext.Session.SetInt32("LoginFacultyId", t.FacultyId);
             if (result != null)
             {
                 HttpContext.Session.SetString("FacultyName", result.FacultyName);

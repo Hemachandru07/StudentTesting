@@ -2,60 +2,61 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "Teacher_Layout";
 }
 
-<h1>Create</h1>
 
-<h4>Marks</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="row row d-flex aligns-items-center justify-content-center">
+    <div class="col-md-8 card p-3 px-5 py-5 mt-3 bg-light">
+        <form asp-action="Create" class="row g-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Subject1" class="control-label"></label>
+            <img src="~/images/logo-removebg-preview.png" class="img-fluid mx-auto d-block" style="width:125px;height:100px;border-radius:35%;"alt="image">
+            <h4 style="text-align:center;color:black">Update Result</h4>
+            <p></p>
+
+            <div class="col-md-6">
+                <label asp-for="Subject1" class="control-label"style="color:black;font-size:20px"></label>
                 <input asp-for="Subject1" class="form-control" />
                 <span asp-validation-for="Subject1" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Subject2" class="control-label"></label>
+            <div class="col-md-6">
+                <label asp-for="Subject2" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Subject2" class="form-control" />
                 <span asp-validation-for="Subject2" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Subject3" class="control-label"></label>
+            <div class="col-md-6">
+                <label asp-for="Subject3" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Subject3" class="form-control" />
                 <span asp-validation-for="Subject3" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Subject4" class="control-label"></label>
+            <div class="col-md-6">
+                <label asp-for="Subject4" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Subject4" class="form-control" />
                 <span asp-validation-for="Subject4" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Subject5" class="control-label"></label>
+            <div class="col-md-6">
+                <label asp-for="Subject5" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Subject5" class="form-control" />
                 <span asp-validation-for="Subject5" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Subject6" class="control-label"></label>
+            <div class="col-md-6">
+                <label asp-for="Subject6" class="control-label" style="color:black;font-size:20px"></label>
                 <input asp-for="Subject6" class="form-control" />
                 <span asp-validation-for="Subject6" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="StudentId" class="control-label"></label>
+            <div class="col-md-12">
+                <label asp-for="StudentId" class="control-label" style="color:black;font-size:20px"></label>
                 <select asp-for="StudentId" class ="form-control" asp-items="ViewBag.StudentId"></select>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <p></p>
+            <div class="form-group" style="text-align:center">
+                <input type="submit" value="Update Result" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

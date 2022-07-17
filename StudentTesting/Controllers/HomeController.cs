@@ -24,7 +24,12 @@ namespace StudentTesting.Controllers
         }
 
         [NoDirectAccess]
-        public IActionResult Privacy()
+        public IActionResult Location()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
         {
             return View();
         }

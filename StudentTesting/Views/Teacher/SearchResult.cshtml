@@ -5,12 +5,9 @@
     Layout = "Teacher_layout";
 }
 
-<h1>SearchResult</h1>
+<h4 style="text-align:center">Search Result</h4>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table" style="color:black;text-align:center;font-size:20px">
     <thead>
         <tr>
             <th>
@@ -63,7 +60,9 @@
                 @Html.DisplayFor(modelItem => item.Department)
             </td>
             
-            
+            <td>
+                <a class="btn btn-primary" asp-controller="Teacher" asp-action="TeacherMain">Back to Main</a>
+            </td>
         </tr>
 }
     </tbody>

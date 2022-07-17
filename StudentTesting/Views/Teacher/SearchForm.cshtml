@@ -6,28 +6,26 @@
 }
 
 
-<h1>SearchForm</h1>
 
-<h4>Studenttbl</h4>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row row d-flex aligns-items-center justify-content-center">
+    <div class="col-md-4 card p-3 px-5 py-5 mt-3 bg-light">
         <form asp-action="SearchResult">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <img src="~/images/logo-removebg-preview.png" class="img-fluid mx-auto d-block" style="width:125px;height:100px;border-radius:35%;"alt="image">
+            <h4 style="text-align:center;color:black">Search Student</h4>
+            <p></p>
 
             <div class="form-group">
                 <label for="SearchPhrase" class="control-label"></label>
                 <input name="SearchPhrase" class="form-control" />
 
             </div>
-            </br>
-            <div class="form-group">
+            <p></p>
+            
+            <div class="form-group" style="text-align:center">
                 <input type="submit" value="Search" class="btn btn-block" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="UserIndex">Back to List</a>
-</div>

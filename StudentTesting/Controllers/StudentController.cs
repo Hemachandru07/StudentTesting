@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,18 @@ namespace StudentTesting.Controllers
         [NoDirectAccess]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.studenttbls.ToListAsync());
+            if(HttpContext.Session.GetInt32("LoginStudentId") != null)
+            {
+                Studenttbl s = _context.studenttbls.Find(HttpContext.Session.GetInt32("LoginStudentId"));
+                List<Studenttbl> studenttbls = new List<Studenttbl>();
+                studenttbls.Add(s);
+                return View(studenttbls);
+            }
+            else
+            {
+                return View(await _context.studenttbls.ToListAsync());
+            }
+           
         }
 
         // GET: Student/Details/5

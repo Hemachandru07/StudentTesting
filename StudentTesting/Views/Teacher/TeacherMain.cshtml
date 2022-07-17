@@ -2,7 +2,7 @@
     Layout = "Teacher_layout";
 }
 
-<div class="row" style="padding-top:50px">
+<div class="row" style="padding-top:50px;text-align:center" >
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
@@ -18,17 +18,17 @@
       <div class="card-body">
         <h5 class="card-title">Result Page</h5>
         <p class="card-text">Update the Dec/Jan results!!! Click the below link</p>
-        <a asp-controller="Marks" asp-action="Index" class="btn btn-primary" style="text-align:center">Update Result</a>
+        <a asp-controller="Marks" asp-action="Index1" class="btn btn-primary" style="text-align:center">Update Result</a>
       </div>
     </div>
   </div>
   <p></p>
-  <div class="col-sm-6">
+  <div class="col-sm-12" style="text-align:center">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Result Page</h5>
-        <p class="card-text">Update the Dec/Jan results!!! Click the below link</p>
-        <a asp-controller="Teacher" asp-action="SearchForm" class="btn btn-primary" style="text-align:center">Update Result</a>
+        <h5 class="card-title">Search Student</h5>
+        <p class="card-text">Click below to find the Student</p>
+        <a asp-controller="Teacher" asp-action="SearchForm" class="btn btn-primary" style="text-align:center">Search</a>
       </div>
     </div>
   </div>

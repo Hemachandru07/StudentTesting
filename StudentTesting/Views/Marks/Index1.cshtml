@@ -2,14 +2,20 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "Teacher_layout";
 }
 
 <h4 style="text-align:center">Result Page</h4>
 
+<p style="text-align:center">
+    <a class="btn btn-primary" asp-action="Create">Update Result</a>
+</p>
+
+
 <table class="table" style="color:black;text-align:center;font-size:20px">
     <thead>
         <tr>
-           
+            
             <th>
                 @Html.DisplayNameFor(model => model.Studentid.StudentName)
             </th>
@@ -41,7 +47,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-           
+            
              <td>
                 @Html.DisplayFor(modelItem => item.Studentid.StudentName)
             </td>

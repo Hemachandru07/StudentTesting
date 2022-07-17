@@ -6,10 +6,10 @@
 }
 
 
-<h1>Teacher details</h1>
+<h4  style="text-align:center">Teacher details</h4>
 
 
-<table class="table">
+<table class="table" style="color:black;text-align:center;font-size:20px">
     <thead>
         <tr>
             <th>
@@ -18,9 +18,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Department)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -33,13 +31,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Department)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FacultyId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FacultyId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FacultyId">Delete</a>
+                <a class = "btn btn-primary" asp-action="Edit" asp-route-id="@item.FacultyId">Edit</a> 
+               
             </td>
         </tr>
 }
