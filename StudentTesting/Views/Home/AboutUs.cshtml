@@ -1,4 +1,163 @@
 ﻿@{
 Layout="CommonLayout";
 }
+
+
+<style>
+    .social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: #ddd;
+  text-decoration: none;
+  color: #555;
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+  <div class="container">
+      <a style="text-align:center"  class="navbar-brand d-flex align-items-center"> 
+      <i class="fa fa-snowflake-o fa-lg text-primary mr-2"></i>
+      <strong >ALAGAPPA CHETTIAR GOVERNMENT COLLEGE OF ENGINEERING AND TECHNOLOGY</strong></a>
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    @*<div id="navbarSupportedContent" class="collapse navbar-collapse">*@
+      @*<ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href="#" class="nav-link font-italic"> Home </a></li>
+        <li class="nav-item active"><a href="#" class="nav-link font-italic"> About </a></li>
+        <li class="nav-item active"><a href="#" class="nav-link font-italic"> Services </a></li>
+        <li class="nav-item active"><a href="#" class="nav-link font-italic"> Contact</a></li>
+      </ul>*@
+    @*</div>*@
+  </div>
+</nav>
+
+<div class="bg-light">
+  <div class="container py-5">
+    <div class="row h-100 align-items-center py-5">
+      <div class="col-lg-6">
+        <h1 class="display-4">Contact us</h1>
+        <p class="lead text-muted mb-0">Alagappa Chettiar Government College of Engineering and Technology,
+                                        Karaikudi-630003.
+                                        Sivagangai, Tamilnadu.<br/>
+                                        Ph : 04565 224528, 224535</p>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white py-5">
+  <div class="container py-5">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+        <h2 class="font-weight-light">Cources Offered</h2>
+        <p style="color:black" class="font-italic text-muted mb-4">ELECTRICAL AND ELECTRONICS ENGINEERING<br/>
+                                               COMPUTER SCIENCE ENGINEERING<br/>
+                                               MECHANICAL ENGINEERING<br/>
+                                               ELECTRONICS AND COMMUNICATION ENGINEERING<br/>
+                                               CIVIL ENGINEERING</p>
+      </div>
+      <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-5 px-5 mx-auto"><img src="https://bootstrapious.com/i/snippets/sn-about/img-2.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+      <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+        <h2 class="font-weight-light">About the Institution</h2>
+        <p class="font-italic text-muted mb-4">Dr.RM.Alagappa Chettiar, a man of rare wisdom, and forethought, founded  Alagappa Chettiar Educational Trust  with the sole aim of developing the backward area of Karaikudi into a centre for higher education.<br/>
+In 1952, Dr. Alagappa Chettiar’s dream came true. Alagappa Chettiar College of Engineering and Technology started functioning from 21st July 1952 with three faculties – Civil Engineering, Mechanical Engineering, Electrical & Electronics Engineering. The Foundation tablet for the main building of the college was laid by Dr.Rajendra Prasad, the then President of India on 19th February 1953.<br/>
+
+The institution was handed over to Government of TamilNadu in the year 1966, since then institution has been administered by the Government through Directorate of Technical Education.In 1969, faculty of Electronics and Communication Engineering was started. Further Part-time Courses in Civil, Mechanical and Electrical & Electronics Engineering were introduced in 1971. To keep pace with the technical advancements and to meet the requirements of  industries from 2001, B.E.<br/>
+
+Degree course in Computer Science and Engineering is also being offered. Six PG Degree courses are offered from the academic year 2002-03 in addition to the Parttime B.E. Course in Electronics & Communication Engineering.Now the institution offers 5 U.G and 6 P.G Programmes to cater the need of students. It also offered 4 Part-time  Programmes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+@*<div class="bg-light py-5">
+  <div class="container py-5">
+    <div class="row mb-4">
+      <div class="col-lg-5">
+        <h2 class="display-4 font-weight-light">College Administrators</h2>
+        
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-4.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+          <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+          <h5 class="mb-0">Samuel Hardy</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+          <h5 class="mb-0">Tom Sunderland</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+          <h5 class="mb-0">John Tarly</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a  class="social-link"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+
+    </div>
+  </div>
+</div>
+*@
+
+@*<footer class="bg-light pb-5">
+  <div class="container text-center">
+    <p class="font-italic text-muted mb-0">&copy; Copyrights Company.com All rights reserved.</p>
+  </div>
+</footer>*@
    

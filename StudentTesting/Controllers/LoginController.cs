@@ -62,6 +62,8 @@ namespace StudentTesting.Controllers
                           select i).SingleOrDefault();
             ViewBag.StudentId = s.StudentId;
             HttpContext.Session.SetInt32("LoginStudentId", s.StudentId);
+            ViewBag.StudentId = s.StudentId;
+            HttpContext.Session.SetInt32("ResultStudentId", s.StudentId);
             if (result != null)
             {
                 HttpContext.Session.SetString("StudentName", result.StudentName);

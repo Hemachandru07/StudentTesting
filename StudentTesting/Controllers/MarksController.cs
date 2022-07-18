@@ -21,9 +21,9 @@ namespace StudentTesting.Controllers
 
         [NoDirectAccess]
         // GET: Marks
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int? id)
         {
-            //if (HttpContext.Session.GetInt32("LoginStudentId") != null)
+            id = HttpContext.Session.GetInt32("ResultStudentId");
             //{
             //    Marks m = _context.marks.Find(HttpContext.Session.GetInt32("LoginStudentId"));
             //    List <Marks> marks = new List<Marks>();
@@ -35,8 +35,14 @@ namespace StudentTesting.Controllers
             //{
             //    return View(await _context.marks.ToListAsync());
             //}
-            var studentDBContext = _context.marks.Include(m => m.Studentid);
-            return View(await studentDBContext.ToListAsync());
+            //var studentDBContext = _context.marks.Include(m => m.Studentid);
+            //return View(await studentDBContext.ToListAsync());
+
+            List<Marks> result = (from i in _context.marks.Include(x => x.Studentid)
+                                  where i.StudentId == id
+                                  select i).ToList();
+             return View(result);
+
         }
 
         public async Task<IActionResult> Index1()
@@ -87,7 +93,7 @@ namespace StudentTesting.Controllers
             //{
                 _context.Add(marks);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index1));
             //}
             //ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "Department", marks.StudentId);
             //return View(marks);
