@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentTesting.Models;
 
+
+
 namespace StudentTesting.Controllers
 {
     public class TeacherController : Controller
@@ -169,15 +171,42 @@ namespace StudentTesting.Controllers
             return View();
         }
 
-        public IActionResult SearchForm()
+        
+        public async Task<IActionResult> SearchStudentAsync(string SearchNumber, string SortOrder, int? PageNumber, string CurrentFilter)
         {
-            return View();
+            ViewData["CurrentSort"] = SortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(SortOrder) ? "name_desc" : "";
+
+            if (SearchNumber != null)
+            {
+                PageNumber = 1;
+            }
+            else
+            {
+                SearchNumber = CurrentFilter;
+            }
+
+            ViewData["CurrentFilter"] = SearchNumber;
+
+            var students = from s in _context.studenttbls
+                           select s;
+            if (!string.IsNullOrEmpty(SearchNumber))
+            {
+                students = students.Where(s => s.Reg_no == SearchNumber);
+            }
+            switch (SortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.StudentName);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.StudentName);
+                    break;
+            }
+            int pageSize = 3;
+            return View(await PaginatedList<Studenttbl>.CreateAsync(students.AsNoTracking(), PageNumber ?? 1, pageSize));
         }
 
-        public IActionResult SearchResult(string SearchPhrase)
-        {
-            return View(_context.studenttbls.Where(i => i.Reg_no.Contains(SearchPhrase)).ToList());
-        }
 
         private bool TeachertblExists(int id)
         {

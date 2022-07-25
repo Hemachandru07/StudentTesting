@@ -6,10 +6,11 @@
 
 <h4 style="text-align:center">Result Page</h4>
 
+
 <table class="table" style="color:black;text-align:center;font-size:20px">
     <thead>
         <tr>
-           
+            
             <th>
                 @Html.DisplayNameFor(model => model.Studentid.StudentName)
             </th>
@@ -67,8 +68,9 @@
                 @Html.DisplayFor(modelItem => item.Subject6)
             </td>
            
+            <a asp-action="ResultPrint">Print</a>
             @*<td>
-                <a asp-action="Edit" asp-route-id="@item.MarksId">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.MarksId">Print</a> |
                 <a asp-action="Details" asp-route-id="@item.MarksId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.MarksId">Delete</a>
             </td>*@

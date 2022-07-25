@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rotativa.AspNetCore;
 using StudentTesting.Models;
 
 using System;
@@ -70,6 +71,7 @@ namespace StudentTesting
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+           
         }
     }
 }

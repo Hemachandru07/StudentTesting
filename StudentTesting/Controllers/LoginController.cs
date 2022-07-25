@@ -163,17 +163,5 @@ namespace StudentTesting.Controllers
             }
         }
 
-        //public IActionResult SearchForm()
-        //{
-        //    return View();
-        //}
-
-        //public IActionResult SearchResult(string SearchPhrase)
-        //{
-        //    return View(db.studenttbls.Where(i => i.Reg_no.Contains(SearchPhrase)).ToList());
-        //}
-
-
-
     }
 }

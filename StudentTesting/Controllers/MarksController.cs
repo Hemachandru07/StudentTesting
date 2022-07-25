@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentTesting.Models;
+using Rotativa;
+using Rotativa.AspNetCore;
 
 namespace StudentTesting.Controllers
 {
@@ -42,7 +44,6 @@ namespace StudentTesting.Controllers
                                   where i.StudentId == id
                                   select i).ToList();
              return View(result);
-
         }
 
         public async Task<IActionResult> Index1()
@@ -186,7 +187,6 @@ namespace StudentTesting.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
 
         private bool MarksExists(int id)
         {

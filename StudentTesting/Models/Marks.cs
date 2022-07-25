@@ -12,26 +12,32 @@ namespace StudentTesting.Models
 
         [Required(ErrorMessage = "*")]
         [Range(0,100,ErrorMessage ="Enter Valid Marks in Range 0-100")]
+        [Display(Name = "English")]
         public int Subject1 { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Range(0, 100, ErrorMessage = "Enter Valid Marks in Range 0-100")]
+        [Display(Name = "Tamil")]
         public int Subject2 { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Range(0, 100, ErrorMessage = "Enter Valid Marks in Range 0-100")]
+        [Display(Name = "Maths")]
         public int Subject3 { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Range(0, 100, ErrorMessage = "Enter Valid Marks in Range 0-100")]
+        [Display(Name = "Science")]
         public int Subject4 { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Range(0, 100, ErrorMessage = "Enter Valid Marks in Range 0-100")]
+        [Display(Name = "Social")]
         public int Subject5 { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Range(0, 100, ErrorMessage = "Enter Valid Marks in Range 0-100")]
+        [Display(Name = "Hindi")]
         public int Subject6 { get; set; }
 
         public int StudentId { get; set; }

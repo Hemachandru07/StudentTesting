@@ -1,0 +1,110 @@
+﻿@model PaginatedList<StudentTesting.Models.Studenttbl>
+
+
+@{
+    ViewData["Title"] = "SearchStudent";
+    Layout = "Teacher_layout";
+}
+
+<h1>SearchStudent</h1>
+
+
+
+@using(Html.BeginForm("SearchStudent","Teacher",FormMethod.Post))
+{
+    <div>
+        Search by Student Reg.NO @Html.TextBox("SearchNumber")
+        <input id="Submit" type="submit" value="Search"/>
+        <a asp-action="SearchStudent">Back to details</a>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Student Id
+            </th>
+            <th>
+     <a asp-action="SearchStudent" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-CurrentFilter="@ViewData["CurrentFilter"]">Student Name</a>
+            </th>
+            <th>
+                Reg.No.
+            </th>
+            <th>
+                Date of Birth
+            </th>
+            <th>
+                Mobile No.
+            </th>
+            <th>
+                Student Email
+            </th>
+            <th>
+                Department
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reg_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
+<p></p>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="SearchStudent"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+
+<a asp-action="SearchStudent"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+<p></p>
+<a asp-action="TeacherMain">Back to main</a>

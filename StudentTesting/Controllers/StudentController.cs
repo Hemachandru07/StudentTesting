@@ -37,6 +37,8 @@ namespace StudentTesting.Controllers
            
         }
 
+        
+
         // GET: Student/Details/5
         [NoDirectAccess]
         public async Task<IActionResult> Details(int? id)

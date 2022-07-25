@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace StudentTesting.Models
 {
     public class Studenttbl
@@ -13,6 +14,7 @@ namespace StudentTesting.Models
         [Required(ErrorMessage = "*")]
         [MaxLength(30)]
         [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Numbers and special characters are not allowed")]
+        [Display(Name = "Student Name")]
         public string StudentName { get; set; }
 
         [Required(ErrorMessage = "*")]
@@ -28,11 +30,13 @@ namespace StudentTesting.Models
         [Required(ErrorMessage = "*")]
         [DataType(DataType.PhoneNumber)]
         [StringLength(13, MinimumLength = 10)]
+        [Display(Name = "Phone Number")]
         public string Mobile_No { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Display(Name = "Email-ID")]
         [DataType(DataType.EmailAddress)]
+        
         public string StudentEmail { get; set; }
 
         [Required(ErrorMessage = "*")]

@@ -8,10 +8,12 @@ namespace StudentTesting.Models
     {
         
         [Key]
+        [Display(Name = "Faculty Id")]
         public int FacultyId { get; set; }
 
         [Required(ErrorMessage = "*")]
         [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Numbers and special characters are not allowed")]
+        [Display(Name = "Faculty Name")]
         public string FacultyName { get; set; }
 
         [Required(ErrorMessage = "*")]
