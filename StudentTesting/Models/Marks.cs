@@ -40,6 +40,7 @@ namespace StudentTesting.Models
         [Display(Name = "Hindi")]
         public int Subject6 { get; set; }
 
+        [Display(Name = "Student Name")]
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Studenttbl Studentid { get; set; }

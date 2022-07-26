@@ -78,8 +78,10 @@ namespace StudentTesting.Controllers
         // GET: Marks/Create
         public IActionResult Create()
         {
-            var result = new SelectList(from i in _context.studenttbls select i.StudentId).ToList();
-            ViewBag.StudentId = result;
+            //var result = new SelectList(from i in _context.studenttbls select i.StudentId).ToList();
+            //ViewBag.StudentId = result;
+            //return View();
+            ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "StudentName");
             return View();
         }
 
@@ -90,14 +92,19 @@ namespace StudentTesting.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MarksId,Subject1,Subject2,Subject3,Subject4,Subject5,Subject6,StudentId")] Marks marks)
         {
-            //if (ModelState.IsValid)
-            //{
+                //_context.Add(marks);
+                //await _context.SaveChangesAsync();
+                //return RedirectToAction(nameof(Index1));
+           
+
+            if (ModelState.IsValid)
+            {
                 _context.Add(marks);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index1));
-            //}
-            //ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "Department", marks.StudentId);
-            //return View(marks);
+            }
+            ViewData["StudentId"] = new SelectList(_context.studenttbls, "StudentId", "StudentName", marks.StudentId);
+            return View(marks);
         }
 
 
@@ -187,6 +194,7 @@ namespace StudentTesting.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        
 
         private bool MarksExists(int id)
         {
