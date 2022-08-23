@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentTesting.Models;
-using Rotativa;
-using Rotativa.AspNetCore;
+
 
 namespace StudentTesting.Controllers
 {
