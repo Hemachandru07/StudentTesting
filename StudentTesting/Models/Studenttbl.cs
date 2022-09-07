@@ -25,7 +25,7 @@ namespace StudentTesting.Models
         [Required(ErrorMessage = "*")]
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
 
         [Required(ErrorMessage = "*")]
         [DataType(DataType.PhoneNumber)]
